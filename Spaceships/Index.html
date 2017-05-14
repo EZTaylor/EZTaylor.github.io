@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Menu </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open("target",800,500);
+
+var background = new sjs.Image("Images/space4.png");
+background.setSize(sjs.getWidth(), sjs.getHeight());
+var tip_text = new sjs.Text("TIP: press spacebar to toggle music",20,"red");
+tip_text.moveTo(240,400);
+var menu_text = new sjs.Text("MENU",28,"blue");
+menu_text.centerH();
+var title_text = new sjs.Text("Space Ships",30,"blue");
+title_text.center().offset(-sjs.gx,-130);
+var startBtn = new sjs.Button("Play Classic Mode", function(){
+	window.location = "Howto_classic.html";
+});
+startBtn.center();
+var survivalBtn = new sjs.Button("Play Infinite Survival Mode", function(){
+window.location = "Howto_survival.html";
+});
+survivalBtn.center().offset(-sjs.gx,30);
+var fastpacedBtn = new sjs.Button("Play Space Race Mode", function(){
+	window.location  = "Howto_fastpaced.html"
+});
+fastpacedBtn.center().offset(-sjs.gx,60);
+var hardcoreBtn = new sjs.Button("Play Space Race HARDCORE Mode", function(){
+window.location = "Howto_hardcore.html"
+});
+hardcoreBtn.center().offset(-sjs.gx,90);
+var CreditBtn = new sjs.Button("Credits", function(){
+window.location = "Credits.html"
+});
+CreditBtn.bottom();
+var intro_text = new sjs.Text("Created by EZ_Taylor",20,"red");
+info_text.bottom().centerH();
+};
+
+//Music
+var playM = new Audio('Music/Eureka.mp3');
+setTimeout(function(){
+playM.play();
+},1);
+
+</script>
+</head>
+<body onload="start()">
+<h1> Space Ships </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>

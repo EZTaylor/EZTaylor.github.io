@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Credits </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open();
+
+var credit_text = new sjs.Text("Music is licensed under a Creative Commons Attribution license. Music provided by Audionautix (Dance Dubber, Inner Journey), and Kevin MacLeod (Kick Shock).",20,"blue");
+
+var menuBtn = new sjs.Button("Main Menu", function(){
+	window.location = "index.html"
+});
+menuBtn.center();
+
+}//end start function
+</script>
+</head>
+<body onload="start()">
+<h1> Space Ships </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>

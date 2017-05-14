@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Menu </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open("target",800,500);
+
+var background = new sjs.Image("Images/space7.png");
+background.setSize(sjs.getWidth(), sjs.getHeight());
+var tip_text = new sjs.Text("TIP: press spacebar to toggle music",20,"red");
+tip_text.moveTo(240,400);
+var menu_text = new sjs.Text("How To Play",28,"blue");
+menu_text.centerH();
+var howto_text = new sjs.Text("In Space Race, you are racing against the traffic of other ships. If you hit any of them, you'll be destroyed. Survive for as long as you can in this intense gamemode by dodging the other ships. Use the arrow keys to move your ship.", 20, "black");
+howto_text.center().offset(-sjs.gx,-120);
+
+var startBtn = new sjs.Button("I'm Ready!", function(){
+	window.location = "Fastpaced.html";
+});
+startBtn.center();
+var intro_text = new sjs.Text("Created by EZ_Taylor",20,"red");
+info_text.bottom().centerH();
+
+}
+</script>
+</head>
+<body onload="start()">
+<h1> Space Ships </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>

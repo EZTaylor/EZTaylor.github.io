@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Menu </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open("target",800,500);
+
+var background = new sjs.Image("Images/space_explosion.jpg");
+background.setSize(sjs.getWidth(), sjs.getHeight());
+
+var score_txt = new sjs.Text("Your Score: 0", 21, "orange");
+score_txt.setText("Your Score: "+localStorage.getItem("score"));
+var menu_text = new sjs.Text("You DIED!!!",28,"red");
+menu_text.centerH();
+var startBtn = new sjs.Button("Retry", function(){
+	window.location = "classic.html";
+});
+startBtn.center();
+var menuBtn = new sjs.Button("Main Menu", function(){
+	window.location = "index.html";
+});
+menuBtn.center().offset(-sjs.gx,30);
+}
+</script>
+</head>
+<body onload="start()">
+<h1> Space Ships </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>

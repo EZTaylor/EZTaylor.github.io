@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Space Ships Survival Mode </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open("target",800,500);
+
+var background = new sjs.Image("Images/space6.png");
+background.setSize(sjs.getWidth(), sjs.getHeight());
+//PLAYER
+var player = new sjs.Image("Images/purple_right.png");
+player.type = "player";
+player.setSize(80,50);
+player.friction = .2;
+player.accel = .5;
+
+sjs.keyDown(RIGHT_KEY,function(){ 
+player.setImage("Images/purple_right.png");
+player.pushRight();
+});
+
+sjs.keyDown(LEFT_KEY,function(){
+player.setImage("Images/purple_left.png");
+player.pushLeft();
+});
+
+sjs.keyDown(DOWN_KEY,function(){
+player.pushDown();
+});
+
+sjs.keyDown(UP_KEY,function(){
+player.pushUp();
+});
+
+//Enemies
+setInterval(function(){
+var speed = Math.floor(1 + Math.random()*10); 
+if(Math.random() > 0.5){ 
+var enemy = new sjs.Image("Images/spaceship_right.png");
+enemy.type = "enemy";
+enemy.setSize(120,60);
+enemy.noBounds = true;
+enemy.friction = 0;
+enemy.pushRight(speed);
+enemy.scaleSize(.5 + Math.random() * 1.2);
+enemy.moveTo(-enemy.getWidth(), Math.random()*(enemy.getClamp().y)); 
+} else {
+var enemy = new sjs.Image("Images/spaceship_left.png");
+enemy.type = "enemy";
+enemy.setSize(120,60);
+enemy.noBounds = true;
+enemy.friction = 0;
+enemy.pushLeft(speed);
+enemy.scaleSize(.5 + Math.random() * 1.2);
+enemy.moveTo(sjs.getWidth(), Math.random()*(enemy.getClamp().y));
+}
+},1000);
+
+sjs.left_screen.offset(-500);
+sjs.right_screen.offset(500);
+
+sjs.onHit("enemy",["right_screen","left_screen"], function(x,y){
+x.destroy();
+});
+
+sjs.onHit("player","enemy", function(x,y){
+x.destroy
+y.destroy
+window.location = "Gameover_survival.html"
+});
+//MUSIC
+
+var playM = new Audio('Music/Spring_Day.mp3');
+var musicOn = true;
+var toggle = true;
+
+setTimeout(function(){
+playM.play();
+musicOn = true;
+},1);
+
+sjs.keyDown(SPACE_KEY, function(){
+if(toggle == true){
+if(musicOn == false){
+playM.play();
+musicOn = true;
+} else {
+playM.pause();
+musicOn = false;
+}
+toggle = false;
+setTimeout(function(){
+toggle = true;
+},1000);
+} //end if toggle statement
+}); //end keyDown function
+
+} //end start
+</script>
+</head>
+<body onload="start()">
+<h1> Space Ships </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>
